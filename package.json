@@ -1,0 +1,48 @@
+{
+  "name": "matterbridge-homewizard-power",
+  "version": "1.0.0",
+  "description": "Matterbridge plugin that reads HomeWizard P1 / kWh / socket / battery measurements and exposes them as Matter Electrical Sensors for Apple Home energy.",
+  "author": "matterbridge-homewizard-power",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/module.js",
+  "types": "dist/module.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/module.js",
+      "types": "./dist/module.d.ts"
+    }
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "files": [
+    "dist",
+    "matterbridge-homewizard-power.config.json",
+    "matterbridge-homewizard-power.schema.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "start": "matterbridge",
+    "add": "matterbridge --add ."
+  },
+  "keywords": [
+    "matterbridge",
+    "plugin",
+    "homewizard",
+    "p1",
+    "energy",
+    "electrical-sensor",
+    "apple-home",
+    "matter"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "^5.8.0"
+  },
+  "peerDependencies": {
+    "matterbridge": ">=3.3.0"
+  }
+}

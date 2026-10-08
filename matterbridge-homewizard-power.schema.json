@@ -1,0 +1,104 @@
+{
+  "title": "HomeWizard vermogen",
+  "description": "Vul het IP-adres van de HomeWizard-meter in. Na opslaan Matterbridge herstarten.",
+  "type": "object",
+  "required": ["host"],
+  "properties": {
+    "name": {
+      "title": "Pluginnaam",
+      "type": "string",
+      "readOnly": true,
+      "ui:widget": "hidden"
+    },
+    "type": {
+      "title": "Plugintype",
+      "type": "string",
+      "readOnly": true,
+      "ui:widget": "hidden"
+    },
+    "host": {
+      "title": "IP-adres van de meter",
+      "description": "Lokaal IP van de P1-meter, kWh-meter of Energy Socket, bijvoorbeeld 192.168.1.50. Zonder http://.",
+      "type": "string",
+      "default": "",
+      "pattern": "^$|^[0-9a-zA-Z._:-]+$",
+      "ui:placeholder": "192.168.1.50"
+    },
+    "deviceName": {
+      "title": "Naam in Apple Home",
+      "description": "Naam van het energie-apparaat in de Woning-app.",
+      "type": "string",
+      "default": "P1 Meter"
+    },
+    "api": {
+      "title": "API",
+      "description": "v1: Local API aanzetten in de Energy-app. v2: HTTPS plus token (knop op de meter indrukken, daarna POST /api/user).",
+      "type": "string",
+      "enum": ["v1", "v2"],
+      "default": "v1"
+    },
+    "token": {
+      "title": "Token (alleen v2)",
+      "description": "Bearer-token van POST https://<ip>/api/user. Leeg laten bij v1.",
+      "type": "string",
+      "default": "",
+      "ui:widget": "password"
+    },
+    "pollInterval": {
+      "title": "Verversen (seconden)",
+      "description": "Hoe vaak het vermogen wordt gelezen. Minimaal 1, advies 5.",
+      "type": "number",
+      "minimum": 1,
+      "maximum": 300,
+      "default": 5
+    },
+    "exposeAs": {
+      "title": "Weergave in Apple Home",
+      "description": "sensor = Electrical Sensor. outlet = virtuele energystekker, als Energie de sensor nog niet toont.",
+      "type": "string",
+      "enum": ["sensor", "outlet"],
+      "default": "sensor"
+    },
+    "whiteList": {
+      "title": "Whitelist",
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true,
+      "ui:widget": "hidden"
+    },
+    "blackList": {
+      "title": "Blacklist",
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true,
+      "ui:widget": "hidden"
+    },
+    "devices": {
+      "title": "Extra meters",
+      "description": "Optioneel. Leeg laten als je alleen het IP hierboven gebruikt.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "host"],
+        "properties": {
+          "name": { "title": "Naam", "type": "string" },
+          "host": { "title": "IP-adres", "type": "string", "ui:placeholder": "192.168.1.51" },
+          "api": { "title": "API", "type": "string", "enum": ["v1", "v2"], "default": "v1" },
+          "token": { "title": "Token", "type": "string", "ui:widget": "password", "default": "" },
+          "serial": { "title": "Serienummer", "type": "string", "default": "" }
+        }
+      }
+    },
+    "debug": {
+      "title": "Debug",
+      "type": "boolean",
+      "default": false
+    },
+    "unregisterOnShutdown": {
+      "title": "Unregister on shutdown",
+      "type": "boolean",
+      "default": false,
+      "ui:widget": "hidden"
+    }
+  }
+}

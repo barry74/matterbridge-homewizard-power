@@ -1,0 +1,16 @@
+{
+  "name": "matterbridge-homewizard-power",
+  "type": "DynamicPlatform",
+  "version": "1.0.0",
+  "host": "",
+  "deviceName": "P1 Meter",
+  "api": "v1",
+  "token": "",
+  "pollInterval": 5,
+  "exposeAs": "sensor",
+  "whiteList": [],
+  "blackList": [],
+  "devices": [],
+  "debug": false,
+  "unregisterOnShutdown": false
+}
